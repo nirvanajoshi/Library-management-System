@@ -1,6 +1,11 @@
 {% extends 'library/base.html' %}
 {% block content %}
 <h2>Books</h2>
+<form method="get" style="margin-bottom:20px;">
+    <input type="text" name="q" value="{{ query }}" placeholder="Search by title..." style="padding:8px 12px; border:1px solid #ddd; border-radius:6px; width:300px;">
+    <button type="submit" style="background:#1a1a2e; color:white; border:none; padding:8px 18px; border-radius:6px; cursor:pointer; margin-left:8px;">Search</button>
+    {% if query %}<a href="{% url 'book_list' %}" style="margin-left:10px; color:#666;">Clear</a>{% endif %}
+</form>
 <table>
     <thead>
         <tr><th>Title</th><th>Author</th><th>Category</th><th>Available</th><th>Total</th></tr>
@@ -19,7 +24,7 @@
             <td>{{ book.total_copies }}</td>
         </tr>
         {% empty %}
-        <tr><td colspan="5" style="text-align:center; color:#999;">No books added yet.</td></tr>
+        <tr><td colspan="5" style="text-align:center; color:#999;">No books found.</td></tr>
         {% endfor %}
     </tbody>
 </table>

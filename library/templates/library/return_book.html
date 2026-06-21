@@ -1,0 +1,12 @@
+{% extends 'library/base.html' %}
+{% block content %}
+<h2>Return Book</h2>
+<div style="background:white; padding:30px; border-radius:10px; max-width:500px; box-shadow:0 2px 8px rgba(0,0,0,0.08);">
+    <p style="margin-bottom:20px;">Confirm return of <strong>{{ record.book.title }}</strong> borrowed by <strong>{{ record.member.name }}</strong>?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" style="background:#28a745; color:white; border:none; padding:10px 25px; border-radius:6px; cursor:pointer; font-size:15px;">Confirm Return</button>
+        <a href="{% url 'borrow_list' %}" style="margin-left:15px; color:#666;">Cancel</a>
+    </form>
+</div>
+{% endblock %}

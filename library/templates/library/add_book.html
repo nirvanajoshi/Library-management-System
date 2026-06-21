@@ -1,0 +1,32 @@
+{% extends 'library/base.html' %}
+{% block content %}
+<h2>Add New Book</h2>
+<div style="background:white; padding:30px; border-radius:10px; max-width:500px; box-shadow:0 2px 8px rgba(0,0,0,0.08);">
+    <form method="post">
+        {% csrf_token %}
+        {% for field, label in field_list %}{% endfor %}
+        <div style="margin-bottom:15px;">
+            <label style="display:block; margin-bottom:5px; font-weight:600;">Title</label>
+            <input type="text" name="title" required style="width:100%; padding:8px 12px; border:1px solid #ddd; border-radius:6px;">
+        </div>
+        <div style="margin-bottom:15px;">
+            <label style="display:block; margin-bottom:5px; font-weight:600;">Author</label>
+            <input type="text" name="author" required style="width:100%; padding:8px 12px; border:1px solid #ddd; border-radius:6px;">
+        </div>
+        <div style="margin-bottom:15px;">
+            <label style="display:block; margin-bottom:5px; font-weight:600;">ISBN</label>
+            <input type="text" name="isbn" required style="width:100%; padding:8px 12px; border:1px solid #ddd; border-radius:6px;">
+        </div>
+        <div style="margin-bottom:15px;">
+            <label style="display:block; margin-bottom:5px; font-weight:600;">Category</label>
+            <input type="text" name="category" required style="width:100%; padding:8px 12px; border:1px solid #ddd; border-radius:6px;">
+        </div>
+        <div style="margin-bottom:20px;">
+            <label style="display:block; margin-bottom:5px; font-weight:600;">Total Copies</label>
+            <input type="number" name="total_copies" value="1" min="1" required style="width:100%; padding:8px 12px; border:1px solid #ddd; border-radius:6px;">
+        </div>
+        <button type="submit" style="background:#e94560; color:white; border:none; padding:10px 25px; border-radius:6px; cursor:pointer; font-size:15px;">Add Book</button>
+        <a href="{% url 'book_list' %}" style="margin-left:15px; color:#666;">Cancel</a>
+    </form>
+</div>
+{% endblock %}
